@@ -31,43 +31,41 @@ var NMB_OF_COINS_TO_PRINT = 100;
 // retrieve all the cryptocurrencies listed in the website
 function getCoins() {
     for (var i = 1; i < rows.length; i++) {
-        
-        if(DEBUG) {
+
+        if (DEBUG) {
             console.log("------------------------------");
         }
-    
-        var row = rows[i];  
-      
+
+        var row = rows[i];
+
         var name = row.querySelector(".currency-name-container").textContent;
-        if ((name === undefined) || (name === null)) {
+        if (!name) {
             name = "-";
         }
-        
-        //var percent = row.querySelector(".percent-7d").getAttribute("data-usd");
+
         var percent = row.querySelector(".percent-7d");
-        if ((percent === undefined) || (percent === null)) {
-          percent = 0;
-        } else {
-          percent = percent.getAttribute("data-usd")
-          if ((percent === undefined) || (percent === null)) {
+        if (!percent) {
             percent = 0;
-          } else {
-              percent = parseFloat(percent);
-          }
+        } else {
+            percent = percent.getAttribute("data-usd")
+            if (percent) {
+                percent = parseFloat(percent);
+            } else {
+                percent = 0;
+            }
         }
-      
-        if(DEBUG) {
-            console.log("typeof name: " + typeof(name));
-            console.log("typeof percent: " + typeof(percent));
+
+        if (DEBUG) {
+            console.log("typeof name: " + typeof (name));
+            console.log("typeof percent: " + typeof (percent));
         }
-        
-        coins[i-1] = new coin.construct(i, name, percent);
-        
-        if(DEBUG) {
-            //console.log(i + " ===> " + name + " ===> ", percent);
-            console.log(values[i]);
+
+        coins[i - 1] = new coin.construct(i, name, percent);
+
+        if (DEBUG) {
+            console.log(coins[i]);
             console.log("------------------------------");
-        }    
+        }
     }
 }
 
@@ -87,17 +85,17 @@ function orderCoins() {
 
 function printCoins(nmbOfCoinsToPrint) {
     console.log("----------------------------------------------");
-    
+
     var size;
-    if((PRINT_ALL_COINS === true) || (arguments.length === 0)) {
+    if ((PRINT_ALL_COINS === true) || (arguments.length === 0)) {
         size = coins.length;
     } else {
         size = nmbOfCoinsToPrint;
     }
-    for(var i=0; i<size; i++) {
+    for (var i = 0; i < size; i++) {
         console.log(coins[i]);
     }
-    
+
     console.log("----------------------------------------------");
 }
 
