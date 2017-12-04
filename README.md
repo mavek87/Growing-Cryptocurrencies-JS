@@ -9,9 +9,12 @@ Usage description:
 - Print the code.js code into the console and press enter
 - Wait untill the results are shown
 
-// Set PRINT_ALL_COINS to TRUE to print all coins. if set to true NMB_OF_COINS_TO_PRINT is ignored
+Set PRINT_ALL_COINS to TRUE to print all coins. if set to true NMB_OF_COINS_TO_PRINT is ignored.
+EXAMPLE:
+
 var PRINT_ALL_COINS = true;
 
-// Set PRINT_ALL_COINS to false and NMB_OF_COINS_TO_PRINT to a number (n) to print only n coins
-// in the example below NMB_OF_COINS_TO_PRINT = 100; so only the first 100 results will be shown
+Set PRINT_ALL_COINS to false and NMB_OF_COINS_TO_PRINT to a number (n) to print only n coins in the example below NMB_OF_COINS_TO_PRINT = 100; so only the first 100 results will be shown.
+
+EXAMPLE:
 var NMB_OF_COINS_TO_PRINT = 100;
