@@ -40,13 +40,9 @@ function getCoins() {
 
         var row = rows[i];
 
-        var name = row.querySelector(".currency-name-container").textContent;
-        name = name || "-";
+        var name = row.querySelector(".currency-name-container").textContent || "-";
 
-        var percent = (row.querySelector(".percent-7d") && row.querySelector(".percent-7d").getAttribute("data-usd")) || 0;
-        if (percent) {
-            percent = parseFloat(percent);
-        }
+        var percent = parseFloat(row.querySelector(".percent-7d") && row.querySelector(".percent-7d").getAttribute("data-usd")) || 0;
 
         if (DEBUG) {
             console.log("typeof name: " + typeof (name));
