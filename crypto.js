@@ -3,7 +3,9 @@
 // WEBSITE: 
 // https://coinmarketcap.com/all/views/all/
 
-// Stampa solo le "n" criptomonete che sono cresciute di più negli ultimi 7 giorni
+/**
+ * Stampa solo le "n" criptomonete che sono cresciute di più negli ultimi 7 giorni
+ */
 
 var rows = document.querySelectorAll("table tr");
 
@@ -39,20 +41,11 @@ function getCoins() {
         var row = rows[i];
 
         var name = row.querySelector(".currency-name-container").textContent;
-        if (!name) {
-            name = "-";
-        }
+        name = name || "-";
 
-        var percent = row.querySelector(".percent-7d");
-        if (!percent) {
-            percent = 0;
-        } else {
-            percent = percent.getAttribute("data-usd")
-            if (percent) {
-                percent = parseFloat(percent);
-            } else {
-                percent = 0;
-            }
+        var percent = (row.querySelector(".percent-7d") && row.querySelector(".percent-7d").getAttribute("data-usd")) || 0;
+        if (percent) {
+            percent = parseFloat(percent);
         }
 
         if (DEBUG) {
