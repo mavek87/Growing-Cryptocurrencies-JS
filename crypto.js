@@ -70,15 +70,22 @@ function getCoins() {
 }
 
 // order the cryptocurrencies using the week percentage of growth (from the best to the worst)
-// used a simple insertion sort algorithm
-function orderCoins() {
+// used a simple selection sort algorithm
+function sortCoins() {
     for (var i = 0; i < (coins.length - 1); i++) {
+
+        var posmax = i;
+
         for (var j = i + 1; j < coins.length; j++) {
-            if (coins[j].percent > coins[i].percent) {
-                var app = coins[i];
-                coins[i] = coins[j];
-                coins[j] = app;
+            if (coins[j].percent > coins[posmax].percent) {
+                posmax = j;
             }
+        }
+
+        if (posmax !== i) {
+            var app = coins[i];
+            coins[i] = coins[posmax];
+            coins[posmax] = app;
         }
     }
 }
@@ -100,5 +107,5 @@ function printCoins(nmbOfCoinsToPrint) {
 }
 
 getCoins();
-orderCoins();
+sortCoins();
 printCoins(NMB_OF_COINS_TO_PRINT);
